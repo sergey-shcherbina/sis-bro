@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from "react-router-dom";
+import Buttons from "./components/Buttons";
+import Login from "./components/Login";
+import Navbar from "./components/NavBar";
+import SisBroNumber from "./components/SisBroNumber";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useContext } from "react";
+import { Context } from "./index";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const { auth } = useContext(Context)
+  const [ user ] = useAuthState(auth)
+  //console.log(user)
+  const bro = 0
+  const sis = 0
+    return (
+      <BrowserRouter>
+        <Navbar />
+        <SisBroNumber bro={bro} sis={sis}/>
+        {user ?
+          <Buttons />
+          :
+          <Login />
+        }                      
+      </BrowserRouter>
+    );
 }
 
 export default App;
