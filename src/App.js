@@ -2,23 +2,28 @@ import { BrowserRouter } from "react-router-dom";
 import Buttons from "./components/Buttons";
 import Login from "./components/Login";
 import Navbar from "./components/NavBar";
-import SisBroNumber from "./components/SisBroNumber";
+import Statistics from "./components/Statistics";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useContext } from "react";
-import { Context } from "./index";
+import { Context } from ".";
 
 function App() {
-  const { auth } = useContext(Context)
-  const [ user ] = useAuthState(auth)
-  //console.log(user)
-  const bro = 0
-  const sis = 0
+  const {auth, firestore} = useContext(Context)
+  console.log(auth)
+  const [user] = useAuthState(auth)
+  const [messages, loading] = useCollectionData(
+    firestore.collection('messages').orderBy('createdAt')
+  )
+  let sis = (!loading && messages[messages.length-1].sisNum) || 0 
+  let bro = (!loading && messages[messages.length-1].broNum) || 0
+  
     return (
       <BrowserRouter>
         <Navbar />
-        <SisBroNumber bro={bro} sis={sis}/>
+        <Statistics sis={sis} bro={bro} />
         {user ?
-          <Buttons />
+          <Buttons sis={sis} bro={bro}/>
           :
           <Login />
         }                      

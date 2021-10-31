@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { Navbar, Button, Row } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Context } from "../index";
+import { Context } from "..";
 
 const NavBar = () => {
-  const { auth } = useContext(Context)
-  const [ user ] = useAuthState(auth)
+  const { auth } = useContext(Context);
+  const [ user ] = useAuthState(auth);
   return (
     <Navbar bg="dark" variant="dark" style={{color: "white", fontSize: 50}}>
       { user ? 
@@ -19,4 +19,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default NavBar;

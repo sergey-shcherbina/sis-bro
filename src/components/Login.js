@@ -1,14 +1,13 @@
-import React, { useContext } from 'react';
-import { Container, Button } from 'react-bootstrap';
-import { Context } from '../index';
-import firebase from 'firebase/compat/app';
+import React, { useContext } from "react";
+import { Container, Button } from "react-bootstrap";
+import { Context } from "..";
+import firebase from "firebase/compat/app";
 
 const Login = () => {
-  const { auth } = useContext(Context)
+  const {auth} = useContext(Context);
   const login = async () => {
-    const provider = new firebase.auth.GoogleAuthProvider()
-    const { user } = await auth.signInWithPopup(provider)
-    console.log(user)
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const {user} = await auth.signInWithPopup(provider);
   }
 
   return (
@@ -20,4 +19,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

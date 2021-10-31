@@ -1,9 +1,9 @@
-import React, { createContext } from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
+import React, { createContext } from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
 
 firebase.initializeApp({
   apiKey: "AIzaSyDO-lyDZEs6sV8MB79FyUISC_KUUbKJE6k",
@@ -15,10 +15,9 @@ firebase.initializeApp({
   measurementId: "G-3C493GZQ27"
 });
 
-export const Context = createContext(null)
-
-const auth = firebase.auth()
-const firestore = firebase.firestore()
+export const Context = createContext(null);
+const auth = firebase.auth();
+const firestore = firebase.firestore();
 
 ReactDOM.render(
   <Context.Provider value={{firebase, auth, firestore}}>
