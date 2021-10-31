@@ -9,14 +9,13 @@ import { useContext } from "react";
 import { Context } from ".";
 
 function App() {
-  const {auth, firestore} = useContext(Context)
-  console.log(auth)
-  const [user] = useAuthState(auth)
+  const {auth, firestore} = useContext(Context);
+  const [user] = useAuthState(auth);
   const [messages, loading] = useCollectionData(
     firestore.collection('messages').orderBy('createdAt')
-  )
-  let sis = (!loading && messages[messages.length-1].sisNum) || 0 
-  let bro = (!loading && messages[messages.length-1].broNum) || 0
+  );
+  let sis = (!loading && messages[messages.length-1].sisNum) || 0;
+  let bro = (!loading && messages[messages.length-1].broNum) || 0;
   
     return (
       <BrowserRouter>
