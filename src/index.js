@@ -6,13 +6,12 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 
 firebase.initializeApp({
-  apiKey: "AIzaSyDO-lyDZEs6sV8MB79FyUISC_KUUbKJE6k",
-  authDomain: "brosis-5c7c1.firebaseapp.com",
-  projectId: "brosis-5c7c1",
-  storageBucket: "brosis-5c7c1.appspot.com",
-  messagingSenderId: "96921636606",
-  appId: "1:96921636606:web:69fc7f8981e47c12e6dfaf",
-  measurementId: "G-3C493GZQ27"
+  apiKey: "AIzaSyDgNLCs-CgFYURfEkYfo71GQSQkmlG6Hn0",
+  authDomain: "perm-537bc.firebaseapp.com",
+  projectId: "perm-537bc",
+  storageBucket: "perm-537bc.appspot.com",
+  messagingSenderId: "882535708452",
+  appId: "1:882535708452:web:cae4390342d94cccafa5b1"
 });
 
 export const Context = createContext(null);

@@ -14,8 +14,8 @@ function App() {
   const [messages, loading] = useCollectionData(
     firestore.collection('messages').orderBy('createdAt')
   );
-  let sis = (!loading && messages[messages.length-1].sisNum) || 0;
-  let bro = (!loading && messages[messages.length-1].broNum) || 0;
+  let sis = !loading && messages[messages.length-1].sisNum;
+  let bro = !loading && messages[messages.length-1].broNum;
   
     return (
       <BrowserRouter>
