@@ -11,18 +11,16 @@ const Buttons = ({sis, bro}) => {
   const [messages, loading] = useCollectionData(
     firestore.collection('messages').orderBy('createdAt')
   );
-  
   const sendMessage = async (value, sis, bro) => {
     firestore.collection('messages').add({
+        id: user.uid,
         sisNum: sis,
         broNum: bro,
-        id: user.uid,
         name: user.displayName,
         text: value,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       });
     }
-
   const add0 = (num) => {
     if (num >=0 && num <= 9) {
       return '0' + num;
