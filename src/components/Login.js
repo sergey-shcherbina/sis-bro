@@ -10,11 +10,6 @@ const Login = () => {
     const {user} = await auth.signInWithPopup(provider);
     console.log(user)
   }
-  const loginFB = async () => {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    const {user} = await auth.signInWithPopup(provider);
-    console.log(user)
-  }
   const loginGithub = async () => {
     const provider = new firebase.auth.GithubAuthProvider();
     const {user} = await auth.signInWithPopup(provider);
