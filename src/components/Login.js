@@ -15,18 +15,21 @@ const Login = () => {
     const {user} = await auth.signInWithPopup(provider);
     console.log(user)
   }
-  
   const loginGithub = async () => {
     const provider = new firebase.auth.GithubAuthProvider();
     const {user} = await auth.signInWithPopup(provider);
     console.log(user)
   }
-
+  const loginFB = async () => {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    const {user} = await auth.signInWithPopup(provider);
+    console.log(user)
+  }
   return (
     <Container className="d-flex flex-column">
       <Button onClick={loginGoogle} variant={"outline-dark"} className="mt-5" style={{fontSize: 50}}> Google </Button>  
-      <Button onClick={loginFB}variant={"outline-dark"} className="mt-5" style={{fontSize: 50}}> Facebook </Button>
       <Button onClick={loginGithub}variant={"outline-dark"} className="mt-5" style={{fontSize: 50}}> Git hub </Button>
+      <Button onClick={loginFB}variant={"outline-dark"} className="mt-5" style={{fontSize: 50}}> Facebook </Button>
     </Container>
   )
 }
