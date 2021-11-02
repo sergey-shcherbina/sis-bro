@@ -9,8 +9,8 @@ const Buttons = ({sis, bro}) => {
   const {auth, firestore} = useContext(Context);
   const [user] = useAuthState(auth);
   const [messages, loading] = useCollectionData(
-        firestore.collection('messages').orderBy('createdAt')
-    );
+    firestore.collection('messages').orderBy('createdAt')
+  );
   
   const sendMessage = async (value, sis, bro) => {
     firestore.collection('messages').add({
@@ -33,22 +33,19 @@ const Buttons = ({sis, bro}) => {
     let date = new Date(time * 1000);
     return date.getHours() + ' : ' + add0(date.getMinutes());
   }
+  const text = !loading && messages[messages.length-1].text;
+  const name = !loading && messages[messages.length-1].name.substring(0, 1).toUpperCase() + 
+    messages[messages.length-1].name.substring(1, messages[messages.length-1].name.indexOf(' '));
+  const createdAt = !loading && messages[messages.length-1].createdAt && convertedTime(messages[messages.length-1].createdAt.seconds); 
 
-  const message = (messages) => { 
-    return <>{!loading && messages[messages.length-1].text}<br/>
-      Sent by {!loading && messages[messages.length-1].name.substring(0, 1).toUpperCase() + 
-      messages[messages.length-1].name.substring(1, messages[messages.length-1].name.indexOf(' '))} at {!loading && 
-      messages[messages.length-1].createdAt && convertedTime(messages[messages.length-1].createdAt.seconds)}</>
-    } 
-  
   const margin = !loading && messages[messages.length-1].text === 'Bro!' ? "50%" : "-50%";
   const buttonStyle = {width: 260, height: 260, borderRadius: 130, border: "20px solid", fontSize: 90};
   
   return (
     <Container className="d-flex flex-column">
       <div style={{display: "flex", justifyContent: "space-around"}}>
-        <div style={{marginLeft: margin, color: "grey"}}>
-          {message(messages)}
+        <div style={{marginLeft: margin, color: "gray"}}>
+          {text}<br/> sent by {name} at {createdAt}
         </div>       
       </div>
       <div style={{display: "flex", justifyContent: "space-around", marginTop: 40}}>
